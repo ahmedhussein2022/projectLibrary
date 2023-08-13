@@ -1,0 +1,79 @@
+﻿@using System.Security.Claims
+@model List<Book>
+
+<style>
+    #imageDiv{
+        background-image:url("/Images/AppImage/Loading.gif");
+        background-repeat:no-repeat;
+        background-position:center;
+        height : 300px;
+
+    }
+    body{
+        overflow-x:hidden;
+    }
+</style>
+<div class="row">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10">
+        <h4 class="bg-dark text-center border-2 text-white mb-3 mt-4 mb-4 p-4 shadow">Book Details</h4>
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>
+@foreach (var item in Model)
+{
+ <div class="row mb-5">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10 shadow">
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4" id="imageDiv">
+                    <img src="/Images/Book/@item.CoverImage" class="img-fluid rounded-start" alt="Cover For @item.Title Book.">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <div>
+                            <strong>Page Count : </strong>@item.PagesCount
+                        </div>
+                        <div>
+                            <strong>Book Publisher : </strong>@item.Publisher.Name
+                        </div>
+                        <div>
+                            <strong>Category : </strong>@item.Category.Name
+                        </div>
+                        <div>
+                            <strong>Published In : </strong>@item.PublishedYear Since : @item.BookAge Year.
+                        </div>
+                        <div>
+                            <strong>Copies In Library : </strong>@item.Copies
+                        </div>
+                        <div>
+                            <strong>Availability In Library : </strong>@item.IsAvalable
+                        </div>
+                        <div>
+                            <strong>Book ISBN : </strong>@item.ISBN
+                        </div>
+                        <div>
+                            <strong>Book Version: </strong>@item.Version
+                        </div>
+                        <p class="card-text"><strong>Description Of The Book : </strong><br />@item.Description</p>
+                        <p class="card-text">By : <small class="text-muted">@item.author.Name</small></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>   
+}
+<div class="row">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-10 mt-5 mb-5">
+        <a href="/Home/Index" class="btn btn-outline-dark form-control">Go Back</a>
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>
